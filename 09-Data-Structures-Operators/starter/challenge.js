@@ -38,30 +38,66 @@ const game = {
     team2: 6.5,
   },
 };
+// My solutions
+// 1.
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${player}`);
+}
 
-const [players1, players2] = game.players;
-console.log(players1, players2);
+// 2.
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) {
+  average += odd;
+}
+average /= odds.length;
+console.log(average);
 
-const [gk, ...fieldPlayers] = players1;
-console.log(gk, fieldPlayers);
+// 3.
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
 
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
+// 4.
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
 
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
-console.log(players1Final);
+// const valuesOdds = Object.values(game.odds);
+// let sum = 0;
+// for (const x of valuesOdds) {
+//   sum += x;
+// }
+// console.log(sum / valuesOdds.length);
 
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1, draw, team2);
+// console.log(`Odd of `);
 
-const printGoals = function (...players) {
-  console.log(`${players.length} goals were scored`);
-};
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
 
-printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
-printGoals(...game.scored);
+// const [gk, ...fieldPlayers] = players1;
+// console.log(gk, fieldPlayers);
 
-team1 < team2 && console.log('Team 1 is more likely to win');
-team1 > team2 && console.log('Team 2 is more likely to win');
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
+
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// console.log(players1Final);
+
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
+
+// const printGoals = function (...players) {
+//   console.log(`${players.length} goals were scored`);
+// };
+
+// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+// printGoals(...game.scored);
+
+// team1 < team2 && console.log('Team 1 is more likely to win');
+// team1 > team2 && console.log('Team 2 is more likely to win');
